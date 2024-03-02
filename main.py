@@ -6,15 +6,15 @@ MORTE = "-"
 
 
 class LifeGame():
-    def __init__(self):
-
+    def __init__(self, init_file):
+        self.file_name = init_file
         self.grille = []
         self.load()
         self.line_nb = len(self.grille)
         self.col_nb = len(self.grille[0])
 
     def load(self):
-        with open("initiale.txt", 'r') as f:
+        with open(self.file_name, 'r') as f:
             self.grille = f.read().splitlines()
 
     def afficher(self):
@@ -55,14 +55,16 @@ class LifeGame():
             next_grille.append(rangee)
         self.grille = next_grille
 
+    def faire_n_cycles(self, n=1):
+        self.afficher()
+        for i in range(n):
+            print(f"   cycle {i+1}/{n}")
+            self.evoluer()
+            self.afficher()
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    game = LifeGame()
-    game.afficher()
-    print()
-    game.evoluer()
-    game.afficher()
-    print()
-    game.evoluer()
-    game.afficher()
+    file = r"./initiale5.txt"
+    game = LifeGame(file)
+    game.faire_n_cycles(200)
