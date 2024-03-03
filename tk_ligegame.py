@@ -53,6 +53,12 @@ class Application(tk.Tk):
                                               fill=couleur, outline='gray')
 
     def inverser_un_point(self, event):
+        """Inverse un point après avoir arrêté le jeu s'il est en cours"""
+        if self.jeu_en_cours:
+            self.jeu_en_cours = False
+            for but in [self.bouton_start, self.bouton_evoluer, self.bouton_clear, self.bouton_selectionner_fichier]:
+                but["state"] = tk.NORMAL
+
         x, y = event.x, event.y
         # trouve la case à inverser
         row = y // self.taille_case
