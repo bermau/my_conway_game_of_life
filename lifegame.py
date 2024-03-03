@@ -47,7 +47,6 @@ class LifeGame():
             else:
                 next_grille.append(self.grille[row])
         self.grille = next_grille
-        self.afficher()
 
 
     def compter_voisins(self, m, n):
