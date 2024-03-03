@@ -30,6 +30,26 @@ class LifeGame():
     def est_vivante (self, m, n):
         return self.grille[m][n] == VIVANTE
 
+    def inverser(self, m, n):
+        next_grille = []
+        for row in range(self.row_nb):
+            if row == m:
+                line = ''
+                for col in range(self.col_nb):
+                    if col == n:
+                        if self.est_vivante(row, col):
+                            line = line + MORTE
+                        else:
+                            line = line + VIVANTE
+                    else:
+                        line = line + self.grille[row][col]
+                next_grille.append(line)
+            else:
+                next_grille.append(self.grille[row])
+        self.grille = next_grille
+        self.afficher()
+
+
     def compter_voisins(self, m, n):
         voisins = 0
         for row_i in (-1, 0, 1):  # row
@@ -78,6 +98,6 @@ class LifeGame():
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    file = r"./galaxy.txt"
+    file = r"./initiale.txt"
     game = LifeGame(file)
     game.faire_n_cycles(200)

@@ -8,6 +8,7 @@ from lifegame import LifeGame
 class Application(tk.Tk):
     def __init__(self, jeu_de_la_vie):
         super().__init__()
+        self.taille_case = None
         self.jeu_de_la_vie = jeu_de_la_vie
         self.canevas = tk.Canvas(self, width=400, height=400, bg='white')
         self.canevas.pack()
@@ -22,6 +23,8 @@ class Application(tk.Tk):
         self.bouton_selectionner_fichier.pack(side=tk.LEFT)
         self.bouton_clear = tk.Button(self, text = "Vider", command=self.clean_screen)
         self.bouton_clear.pack(side=tk.LEFT)
+
+        self.canevas.bind("<ButtonRelease-1>", self.inverser_un_point)
 
     def selectionner_fichier(self):
         chemin_fichier = filedialog.askopenfilename(title="Sélectionner un fichier")
@@ -49,6 +52,14 @@ class Application(tk.Tk):
                                               (col+1)*self.taille_case, (row+1)*self.taille_case,
                                               fill=couleur, outline='gray')
 
+    def inverser_un_point(self, event):
+        x, y = event.x, event.y
+        # trouve la case à inverser
+        row = y // self.taille_case
+        col = x // self.taille_case
+        print (f"La case choisie est {row}, {col}")
+        self.jeu_de_la_vie.inverser(row, col)
+        self.dessiner_grille()
 
     def demarrer(self):
         self.jeu_en_cours = True
@@ -70,8 +81,8 @@ class Application(tk.Tk):
 
 if __name__ == "__main__":
     # Initialisation du jeu de la vie avec une grille de 20x20 et quelques cellules vivantes
-    jeu = LifeGame(r"./galaxy.txt")
-
+    # jeu = LifeGame(r"./galaxy.txt")
+    jeu = LifeGame(r"./initiale.txt")
     # Création de l'application Tkinter
     app = Application(jeu)
     app.dessiner_grille()
