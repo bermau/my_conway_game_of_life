@@ -41,12 +41,12 @@ class Application(tk.Tk):
 
     def dessiner_grille(self):
         self.canevas.delete(tk.ALL)
-        taille_case = 400 // self.jeu_de_la_vie.row_nb
-        for x in range(self.jeu_de_la_vie.row_nb):
-            for y in range(self.jeu_de_la_vie.col_nb):
-                couleur = 'black' if self.jeu_de_la_vie.est_vivante(x, y) else 'white'
-                self.canevas.create_rectangle(x*taille_case, y*taille_case,
-                                              (x+1)*taille_case, (y+1)*taille_case,
+        self.taille_case = 400 // self.jeu_de_la_vie.row_nb
+        for row in range(self.jeu_de_la_vie.row_nb):
+            for col in range(self.jeu_de_la_vie.col_nb):
+                couleur = 'black' if self.jeu_de_la_vie.est_vivante(row, col) else 'white'
+                self.canevas.create_rectangle(col*self.taille_case, row*self.taille_case,
+                                              (col+1)*self.taille_case, (row+1)*self.taille_case,
                                               fill=couleur, outline='gray')
 
 
