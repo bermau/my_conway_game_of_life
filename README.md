@@ -6,7 +6,7 @@ This program is not optimized at all but runs. That's all I wanted.
 
 ## Getting Started
   * Requires Python 3 (tested with 3.10)
-  * Run the `tk_lifegame` program
+  * Run the `tk_lifegame.py` program
 
 ## Features
 | ![kok_galaxy.png](images%2Fkok_galaxy.png) | ![kok_galaxy2.png](images%2Fkok_galaxy2.png) | 
@@ -31,7 +31,7 @@ Ce programme est fonctionnel, bien que non optimal.
 
 ## Démarrage
   * Nécessite Python 3 (3.10)
-  * Lancer le programme tk_lifegame
+  * Lancer le programme tk_lifegame.py
 
 ## Caractéristiques
   * Plusieurs boutons pour : 
