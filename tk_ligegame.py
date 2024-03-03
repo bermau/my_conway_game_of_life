@@ -14,9 +14,9 @@ class Application(tk.Tk):
         self.canevas.pack()
         self.bouton_start = tk.Button(self, text="Démarrer", command=self.demarrer)
         self.bouton_start.pack(side=tk.LEFT)
-        self.bouton_stop = tk.Button(self, text="Arrêter", command=self.arreter)
+        self.bouton_stop = tk.Button(self, text="Arrêter", state=tk.DISABLED, command=self.arreter)
         self.bouton_stop.pack(side=tk.LEFT)
-        self.bouton_evoluer = tk.Button(self, text="Évoluer", command=self.evoluer)
+        self.bouton_evoluer = tk.Button(self, text="Un pas", command=self.evoluer)
         self.bouton_evoluer.pack(side=tk.LEFT)
         self.bouton_selectionner_fichier = tk.Button(self, text="Sélectionner un fichier",
                                                      command=self.selectionner_fichier)
@@ -63,10 +63,16 @@ class Application(tk.Tk):
 
     def demarrer(self):
         self.jeu_en_cours = True
+        self.bouton_stop["state"] = tk.NORMAL
+        for but in [self.bouton_start, self.bouton_evoluer, self.bouton_clear, self.bouton_selectionner_fichier]:
+            but["state"] = tk.DISABLED
         self.jouer()
 
     def arreter(self):
         self.jeu_en_cours = False
+        self.bouton_stop["state"] = tk.DISABLED
+        for but in [self.bouton_start, self.bouton_evoluer, self.bouton_clear, self.bouton_selectionner_fichier]:
+            but["state"] = tk.NORMAL
 
     def evoluer(self):
         self.jeu_de_la_vie.evoluer()
