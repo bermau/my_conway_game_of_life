@@ -79,7 +79,6 @@ class LifeGame():
                         rangee += VIVANTE
                     else:
                         rangee += MORTE
-
             next_grille.append(rangee)
         self.grille = next_grille
 

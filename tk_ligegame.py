@@ -61,6 +61,7 @@ class Application(tk.Tk):
                 but["state"] = tk.NORMAL
 
         x, y = event.x, event.y
+
         # trouve la case à inverser
         row = y // self.taille_case
         col = x // self.taille_case
