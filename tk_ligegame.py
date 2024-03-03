@@ -4,6 +4,7 @@ from tkinter import filedialog
 
 from lifegame import LifeGame
 
+CELL_SIZE = 400
 
 class Application(tk.Tk):
     def __init__(self, jeu_de_la_vie):
