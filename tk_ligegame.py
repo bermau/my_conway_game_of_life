@@ -10,6 +10,7 @@ class Application(tk.Tk):
     def __init__(self, jeu_de_la_vie):
         super().__init__()
         self.taille_case = None
+        self.jeu_en_cours = False
         self.jeu_de_la_vie = jeu_de_la_vie
         self.canevas = tk.Canvas(self, width=400, height=400, bg='white')
         self.canevas.pack()
@@ -65,7 +66,6 @@ class Application(tk.Tk):
         # trouve la case à inverser
         row = y // self.taille_case
         col = x // self.taille_case
-        print (f"La case choisie est {row}, {col}")
         self.jeu_de_la_vie.inverser(row, col)
         self.dessiner_grille()
 
